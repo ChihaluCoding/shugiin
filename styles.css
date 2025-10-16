@@ -328,6 +328,8 @@
   font-weight: 700;
   color: #00d4ff;
   font-size: 1.15rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .shugiin-modernizer td:nth-child(2) {
@@ -650,6 +652,8 @@
 
 .shugiin-modernizer .legend-info {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .shugiin-modernizer .legend-name {
@@ -657,12 +661,18 @@
   color: #fff;
   margin-bottom: 0.25rem;
   font-size: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .shugiin-modernizer .legend-seats {
   color: #00d4ff;
   font-weight: 600;
   font-size: 1.1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .shugiin-modernizer .legend-percentage {
