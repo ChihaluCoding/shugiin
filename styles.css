@@ -1,0 +1,802 @@
+/* 衆議院サイト モダナイザー - メインスタイル */
+
+/* グローバルリセットとベーススタイル */
+.shugiin-modernizer * {
+  box-sizing: border-box;
+}
+
+.shugiin-modernizer body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+.shugiin-modernizer body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ヘッダーの改善 */
+.shugiin-modernizer header,
+.shugiin-modernizer .header-area {
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(44, 83, 100, 0.95) 100%);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  padding: 2rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid #00d4ff;
+  border-image: linear-gradient(90deg, #00d4ff, #667eea, #764ba2) 1;
+}
+
+.shugiin-modernizer .header-area h1 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0.5rem 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+  letter-spacing: 1px;
+}
+
+/* ナビゲーションの改善 */
+.shugiin-modernizer nav,
+.shugiin-modernizer .nav-area {
+  background: rgba(15, 32, 39, 0.8);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.shugiin-modernizer nav ul,
+.shugiin-modernizer .nav-area ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1rem;
+}
+
+.shugiin-modernizer nav a,
+.shugiin-modernizer .nav-area a {
+  color: #00d4ff;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 600;
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.shugiin-modernizer nav a::before,
+.shugiin-modernizer .nav-area a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.shugiin-modernizer nav a:hover::before,
+.shugiin-modernizer .nav-area a:hover::before {
+  left: 100%;
+}
+
+.shugiin-modernizer nav a:hover,
+.shugiin-modernizer .nav-area a:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+  color: #fff;
+}
+
+/* メインコンテンツエリア */
+.shugiin-modernizer main,
+.shugiin-modernizer .content-area {
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* パンくずリストの改善 */
+.shugiin-modernizer .breadcrumb {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(102, 126, 234, 0.1));
+  padding: 1.25rem 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.shugiin-modernizer .breadcrumb a {
+  color: #00d4ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.shugiin-modernizer .breadcrumb a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+/* ページタイトルの改善 */
+.shugiin-modernizer h1,
+.shugiin-modernizer h2,
+.shugiin-modernizer h3 {
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+
+.shugiin-modernizer h1 {
+  font-size: 3rem;
+  text-align: center;
+  background: linear-gradient(135deg, #00d4ff, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3rem;
+  text-shadow: none;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.shugiin-modernizer h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #00d4ff, #667eea);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+}
+
+/* 検索・フィルター機能 */
+.shugiin-modernizer .search-filter {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(102, 126, 234, 0.1));
+  padding: 2rem;
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.shugiin-modernizer .search-filter::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.shugiin-modernizer .search-input {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 30px;
+  font-size: 1.1rem;
+  outline: none;
+  transition: all 0.4s ease;
+  background: rgba(15, 32, 39, 0.6);
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.shugiin-modernizer .search-input::placeholder {
+  color: rgba(0, 212, 255, 0.6);
+}
+
+.shugiin-modernizer .search-input:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.2), 0 0 20px rgba(0, 212, 255, 0.4);
+  background: rgba(15, 32, 39, 0.8);
+  transform: translateY(-2px);
+}
+
+.shugiin-modernizer .filter-info {
+  position: relative;
+  z-index: 1;
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+/* テーブルの完全なリデザイン */
+.shugiin-modernizer table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: linear-gradient(135deg, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9));
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 212, 255, 0.2);
+  margin: 3rem 0;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.shugiin-modernizer thead {
+  background: linear-gradient(135deg, #00d4ff 0%, #667eea 50%, #764ba2 100%);
+  color: white;
+  position: relative;
+}
+
+.shugiin-modernizer thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  opacity: 0.3;
+}
+
+.shugiin-modernizer th {
+  padding: 1.75rem 1.25rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.shugiin-modernizer tbody tr {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  position: relative;
+}
+
+.shugiin-modernizer tbody tr::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, #00d4ff, #667eea);
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+}
+
+.shugiin-modernizer tbody tr:hover::before {
+  transform: scaleY(1);
+}
+
+.shugiin-modernizer tbody tr:hover {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15), rgba(102, 126, 234, 0.15));
+  transform: translateX(8px);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+  cursor: pointer;
+}
+
+.shugiin-modernizer td {
+  padding: 1.5rem 1.25rem;
+  font-size: 1.1rem;
+  vertical-align: middle;
+  color: #ffffff;
+}
+
+.shugiin-modernizer td:first-child {
+  font-weight: 700;
+  color: #00d4ff;
+  font-size: 1.15rem;
+}
+
+.shugiin-modernizer td:nth-child(2) {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(102, 126, 234, 0.2));
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.shugiin-modernizer td:last-child {
+  font-weight: 800;
+  color: #00ff88;
+  text-align: center;
+  font-size: 1.3rem;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* カード形式のレイアウト（モバイル用） */
+@media (max-width: 768px) {
+  .shugiin-modernizer h1 {
+    font-size: 2rem;
+  }
+
+  .shugiin-modernizer .semicircle-chart {
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
+  }
+
+  .shugiin-modernizer .chart-total {
+    font-size: 2.5rem;
+  }
+
+  .shugiin-modernizer .chart-legend {
+    grid-template-columns: 1fr;
+  }
+
+  .shugiin-modernizer table,
+  .shugiin-modernizer thead,
+  .shugiin-modernizer tbody,
+  .shugiin-modernizer th,
+  .shugiin-modernizer td,
+  .shugiin-modernizer tr {
+    display: block;
+  }
+
+  .shugiin-modernizer thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .shugiin-modernizer tbody tr {
+    background: linear-gradient(135deg, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.9));
+    border-radius: 20px;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transform: none !important;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+  }
+
+  .shugiin-modernizer tbody tr::before {
+    display: none;
+  }
+
+  .shugiin-modernizer tbody tr:hover {
+    box-shadow: 0 12px 32px rgba(0, 212, 255, 0.4);
+  }
+
+  .shugiin-modernizer td {
+    border: none;
+    padding: 1rem 0;
+    text-align: left !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  }
+
+  .shugiin-modernizer td:last-child {
+    border-bottom: none;
+  }
+
+  .shugiin-modernizer td:before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #00d4ff;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .shugiin-modernizer td:nth-child(2) {
+    background: none;
+    text-align: right !important;
+  }
+}
+
+/* 統計カード */
+.shugiin-modernizer .stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.shugiin-modernizer .stat-card {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(102, 126, 234, 0.1));
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.shugiin-modernizer .stat-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.shugiin-modernizer .stat-card:hover::before {
+  opacity: 1;
+}
+
+.shugiin-modernizer .stat-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 45px rgba(0, 212, 255, 0.4);
+  border-color: #00d4ff;
+}
+
+.shugiin-modernizer .stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
+  text-shadow: none;
+}
+
+.shugiin-modernizer .stat-label {
+  color: #00d4ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* 議席グラフコンテナ */
+.shugiin-modernizer .seat-chart-container {
+  background: linear-gradient(135deg, rgba(15, 32, 39, 0.95), rgba(32, 58, 67, 0.95));
+  border-radius: 25px;
+  padding: 3rem 2rem;
+  margin: 3rem 0;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+
+.shugiin-modernizer .seat-chart-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #00d4ff, #667eea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shugiin-modernizer .chart-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.shugiin-modernizer .semicircle-chart {
+  position: relative;
+  width: 500px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.shugiin-modernizer .semicircle-chart svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.shugiin-modernizer .chart-center-text {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.shugiin-modernizer .chart-total {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #00d4ff;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  line-height: 1;
+}
+
+.shugiin-modernizer .chart-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+}
+
+.shugiin-modernizer .majority-line {
+  position: absolute;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(180deg, #ff4757, transparent);
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  box-shadow: 0 0 10px #ff4757;
+}
+
+.shugiin-modernizer .majority-label {
+  position: absolute;
+  color: #ff4757;
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.8);
+}
+
+/* 凡例 */
+.shugiin-modernizer .chart-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.shugiin-modernizer .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 212, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.shugiin-modernizer .legend-item.ruling-party {
+  background: rgba(231, 76, 60, 0.1);
+  border-color: rgba(231, 76, 60, 0.4);
+  box-shadow: 0 0 20px rgba(231, 76, 60, 0.2);
+}
+
+.shugiin-modernizer .legend-item:hover {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: #00d4ff;
+  transform: translateX(5px);
+}
+
+.shugiin-modernizer .legend-item.ruling-party:hover {
+  background: rgba(231, 76, 60, 0.2);
+  border-color: #e74c3c;
+  box-shadow: 0 0 30px rgba(231, 76, 60, 0.4);
+}
+
+.shugiin-modernizer .legend-color {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.shugiin-modernizer .legend-color::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  to {
+    left: 100%;
+  }
+}
+
+.shugiin-modernizer .legend-info {
+  flex: 1;
+}
+
+.shugiin-modernizer .legend-name {
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.shugiin-modernizer .legend-seats {
+  color: #00d4ff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.shugiin-modernizer .legend-percentage {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+/* フッターの改善 */
+.shugiin-modernizer footer {
+  background: linear-gradient(135deg, rgba(15, 32, 39, 0.95), rgba(26, 26, 46, 0.95));
+  color: #00d4ff;
+  padding: 3rem 0;
+  margin-top: 4rem;
+  text-align: center;
+  border-top: 2px solid rgba(0, 212, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.shugiin-modernizer footer a {
+  color: #00d4ff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.shugiin-modernizer footer a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+/* ローディングアニメーション */
+.shugiin-modernizer .loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* スクロールバーのカスタマイズ */
+.shugiin-modernizer ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.shugiin-modernizer ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.shugiin-modernizer ::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3498db, #9b59b6);
+  border-radius: 4px;
+}
+
+.shugiin-modernizer ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2980b9, #8e44ad);
+}
+
+/* アクセシビリティの改善 */
+.shugiin-modernizer *:focus {
+  outline: 3px solid #3498db;
+  outline-offset: 2px;
+}
+
+.shugiin-modernizer .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ダークモード対応 */
+@media (prefers-color-scheme: dark) {
+  .shugiin-modernizer body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  }
+
+  .shugiin-modernizer table {
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(26, 26, 46, 0.95));
+  }
+
+  .shugiin-modernizer .search-filter,
+  .shugiin-modernizer .stat-card,
+  .shugiin-modernizer .breadcrumb {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(102, 126, 234, 0.05));
+    border-color: rgba(0, 212, 255, 0.2);
+  }
+
+  .shugiin-modernizer tbody tr:hover {
+    background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(102, 126, 234, 0.2));
+  }
+}
+
+/* アニメーション */
+.shugiin-modernizer .fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shugiin-modernizer .slide-in {
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

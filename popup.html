@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>衆議院サイト モダナイザー</title>
+  <style>
+    body {
+      width: 350px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin: 0;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+
+    .header p {
+      margin: 0;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    .status {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #27ae60;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toggle-button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .toggle-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .toggle-button.active {
+      background: #27ae60;
+      border-color: #27ae60;
+    }
+
+    .features {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .features h3 {
+      margin: 0 0 10px 0;
+      font-size: 1rem;
+    }
+
+    .features ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .features li {
+      margin-bottom: 5px;
+    }
+
+    .current-url {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .settings {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .setting-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      transition: .4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #27ae60;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>衆議院サイト モダナイザー</h1>
+    <p>衆議院サイトを現代的なデザインに変更</p>
+  </div>
+
+  <div class="status">
+    <div class="status-indicator">
+      <div class="status-dot"></div>
+      <span id="status-text">アクティブ</span>
+    </div>
+    <div id="current-url" class="current-url"></div>
+  </div>
+
+  <div class="controls">
+    <button class="toggle-button active" id="toggle-extension">
+      拡張機能を無効にする
+    </button>
+    <button class="toggle-button" id="reload-page">
+      ページを再読み込み
+    </button>
+  </div>
+
+  <div class="settings">
+    <h3>設定</h3>
+    <div class="setting-item">
+      <span>ダークモード</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-mode" aria-label="ダークモードの切り替え">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="setting-item">
+      <span>アニメーション</span>
+      <label class="switch">
+        <input type="checkbox" id="animations" checked aria-label="アニメーションの切り替え">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="setting-item">
+      <span>統計表示</span>
+      <label class="switch">
+        <input type="checkbox" id="statistics" checked aria-label="統計表示の切り替え">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="features">
+    <h3>追加機能</h3>
+    <ul>
+      <li>レスポンシブデザイン</li>
+      <li>検索・フィルタリング</li>
+      <li>統計情報表示</li>
+      <li>モダンなUI/UX</li>
+      <li>アクセシビリティ向上</li>
+      <li>アニメーション効果</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>Version 1.0.0</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
